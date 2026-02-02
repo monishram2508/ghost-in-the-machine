@@ -208,10 +208,11 @@ __marimo__/
 .env
 __pycache__/
 *.pyc 
-data/clean/
-data/human/
-data/frequencies/
-data/topics/
-gitm/
+
+
+#custom
+data/*
+gitm/*
+!data/.gitkeep
 .DS_Store
 >>>>>>> 399bfe7 (preparation and extraction commit)

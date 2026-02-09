@@ -66,27 +66,22 @@ def extract_frequencies(path_chunked, path_frequencies):
     return book_nouns
 
 def calculate_tfidf(book_nouns):
-    doc_frequency = Counter()
-    for book, noun_counts in book_nouns.items():
+    doc_frequency=Counter()
+    for book,noun_counts in book_nouns.items():
         for noun in noun_counts.keys():
-            doc_frequency[noun] += 1
+            doc_frequency[noun]+=1
+    total_books=len(book_nouns)
+    book_tfidf={}
     
-    total_books = len(book_nouns)
-    book_tfidf = {}
-    
-    for book, noun_counts in book_nouns.items():
-        tfidf_scores = {}
-        total_nouns = sum(noun_counts.values())
-        
-        for noun, count in noun_counts.items():
-            tf = count / total_nouns
-            idf = math.log(total_books / doc_frequency[noun])
-            tfidf_scores[noun] = tf * idf
-        
-        book_tfidf[book] = tfidf_scores
-    
+    for book,noun_counts in book_nouns.items():
+        tfidf_scores={}
+        total_nouns=sum(noun_counts.values())
+        for noun,count in noun_counts.items():
+            tf=count/total_nouns
+            idf=math.log(total_books/doc_frequency[noun])
+            tfidf_scores[noun]=tf*idf
+        book_tfidf[book]=tfidf_scores
     return book_tfidf
-
 
 def save_topics(book_tfidf, path_topics, top_n=10):
     path_topics.mkdir(parents=True, exist_ok=True)
@@ -97,7 +92,6 @@ def save_topics(book_tfidf, path_topics, top_n=10):
         
         output_path = path_topics / f"{book}_topics.txt"
         output_path.write_text('\n'.join(top_words), encoding='utf-8')
-
 
 if __name__ == "__main__":
     book_nouns = extract_frequencies(path_chunked, path_frequencies)

@@ -64,7 +64,9 @@ def grade(text):
 def process():
     data=[]
     for label,folder in folders.items():
-        for file in folder.glob("*.txt"):
+        print(label,folder)
+        for file in tdqm(folder.glob("*.txt"),desc=f"Iterating through files in {label}"):
+            print(file.name)
             text=file.read_text(encoding="utf-8")
             doc=nlp(text)
             ttr,hapax=ttr_hapax(doc)
@@ -72,6 +74,7 @@ def process():
             pos=pos_dist(doc)
             depth=depedency_depth(doc)
             fk_grade=grade(text)
+            punc=punctuation_density(text)
             row={
                 "filename":file.stem,
                 "label":label,
@@ -79,15 +82,43 @@ def process():
                 "hapax":hapax,
                 "adj_noun_ratio":pos,
                 "tree_depth":depth,
+                "semicolon_density": punc["semicolon"],
+                "emdash_density": punc["emdash"] + punc["dash"],
+                "exclamation_density": punc["exclamation"],
+                "question_density": punc["question"],
+                "comma_density": punc["comma"],
+                "colon_density": punc["colon"],
                 "fk_grade":fk_grade
             }
             data.append(row)
-    if data:
-        df=pd.DataFrame(data)
-        path=root/"data"/"fingerprint_data.csv"
-        df.to_csv(path,index=False)
-        print("done")
+            if data:
+                df=pd.DataFrame(data)
+                path=root/"data"/"fingerprint_data.csv"
+                df.to_csv(path,index=False)
+                print("done")
     return path
+
+def punctuation_density(text):
+    punctuations={
+        "semicolon":";",
+        "dash":"--",
+        "emdash":"-",
+        "exclamation":"!",
+        "question":"?",
+        "comma":",",
+        "colon":":"
+    }
+    words=text.split()
+    word_count=len(words)
+    if word_count==0:
+        for k in punctuations:
+            punctuations[k]=0
+        return punctuations
+    densities={}
+    for name,symbol in punctuations.items():
+        count=text.count(symbol)
+        densities[name]=count/word_count*1000
+    return densities
 
 def display_results(file):
     df=pd.read_csv(file)

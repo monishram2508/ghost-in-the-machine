@@ -17,13 +17,14 @@ Task 4 - The Turing Test
 
 
 ## Repo Structure
-* `notebooks/`: Jupyter notebooks for data analysis and training.
-* `src/`: Helper scripts for data cleaning.
-* `models/`: Saved LoRA adapters.
-* `images/`: Confusion matrices and SHAP plots.
+* `notebooks/`: Jupyter notebook for all data analysis and training.
+* `src/`: Scripts for all tasks.
+* `models/`: Saved Tier C model (LoRA adapted).
+* `plots/`: Confusion matrices, SHAP plot, and statistical plots.
 
 ## How to Run
-. Install dependencies:
+1. Install dependencies:
    `pip install -r requirements.txt`
 2. Run the training notebook:
    `jupyter notebook notebooks/overview.ipynb`
+

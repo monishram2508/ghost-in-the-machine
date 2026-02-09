@@ -1,6 +1,5 @@
 # NLP - Ghost in the Machine: AI Text Detection
 **Author:** [Monishram Selvaraj]
-**Status:** Completed (Feb 2026)
 
 ## Project Overview
 
@@ -27,4 +26,4 @@ Task 4 - The Turing Test
 . Install dependencies:
    `pip install -r requirements.txt`
 2. Run the training notebook:
-   `jupyter notebook notebooks/Tier_C_Training.ipynb`
+   `jupyter notebook notebooks/overview.ipynb`

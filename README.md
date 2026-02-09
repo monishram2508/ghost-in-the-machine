@@ -28,3 +28,10 @@ Task 4 - The Turing Test
 2. Run the training notebook:
    `jupyter notebook notebooks/overview.ipynb`
 
+##Data & Embeddings
+
+Large files (GloVe embeddings, generated datasets) are not tracked in Git.
+
+To reproduce:
+- Download GloVe from: <https://nlp.stanford.edu/data/wordvecs/glove.2024.dolma.300d.zip>
+- Place it at: data/dolma_300_2024_1.2M.100_combined.txt

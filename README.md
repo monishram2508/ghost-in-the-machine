@@ -28,7 +28,7 @@ Task 4 - The Turing Test
 2. Run the training notebook:
    `jupyter notebook notebooks/overview.ipynb`
 
-##Data & Embeddings
+## Data & Embeddings
 
 Large files (GloVe embeddings, generated datasets) are not tracked in Git.
 

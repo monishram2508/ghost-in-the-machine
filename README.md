@@ -63,7 +63,7 @@ Some large assets are not versioned in Git (for example embeddings and generated
 Recommended path:
 
 ```bash
-jupyter notebook /home/runner/work/ghost-in-the-machine/ghost-in-the-machine/notebooks/overview.ipynb
+jupyter notebook notebooks/overview.ipynb
 ```
 
 Script path (stage-by-stage) is available in `src/` using numbered files (`01_...` to `41_...`).

@@ -11,3 +11,4 @@ notebooks/models/
 notebooks/results/
 .DS_Store
 *.npz
+\!data/fingerprint_data.csv

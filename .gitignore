@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*.pyc
+.ipynb_checkpoints/
+.env
+gitm/
+data/
+models/distilbert_lora_tuned/
+notebooks/data/
+notebooks/models/
+notebooks/results/
+.DS_Store
+*.npz
